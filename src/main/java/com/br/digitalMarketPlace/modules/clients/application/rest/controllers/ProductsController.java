@@ -32,14 +32,9 @@ public class ProductsController {
 	private final IProductService productService;
 
 	public ProductsController(IProductService productService) {
-		super();
 		this.productService = productService;
 	}
-
-	public ProductsController() {
-		this.productService = null;
-
-	}
+	
 
 	@GetMapping
 	public List<Product> index() {
@@ -49,7 +44,7 @@ public class ProductsController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Product> show(@PathVariable String id) {
 		try {
-			Product product = productService.showClient(id);
+			Product product = productService.showProduct(id);
 			return ResponseEntity.ok(product);
 
 		} catch (AppError e) {

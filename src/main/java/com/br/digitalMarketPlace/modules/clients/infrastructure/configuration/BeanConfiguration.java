@@ -7,14 +7,14 @@ import org.springframework.context.annotation.Configuration;
 import com.br.digitalMarketPlace.DigitalMarketPlaceApplication;
 import com.br.digitalMarketPlace.modules.clients.domain.repositories.IClientsRepository;
 import com.br.digitalMarketPlace.modules.clients.domain.services.ClientsServiceImpl;
-import com.br.digitalMarketPlace.modules.clients.domain.services.IClientsService;
+import com.br.digitalMarketPlace.modules.clients.domain.services.CrudService;
 
 @Configuration
 @ComponentScan(basePackageClasses = DigitalMarketPlaceApplication.class)
 public class BeanConfiguration {
   
   @Bean
-  IClientsService clientsService(final IClientsRepository clientsRepository) {
+  CrudService clientsService(final IClientsRepository clientsRepository) {
     return new ClientsServiceImpl(clientsRepository);
   }
 }

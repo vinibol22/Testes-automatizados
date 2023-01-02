@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -27,9 +28,10 @@ public class Client implements Serializable {
 	private String email;
 	private String dateOfBirth;
 	private String cpf;
-	@OneToMany
+	@JsonIgnore
+	@OneToMany(mappedBy = "clients")
 	private List<Product> product;
-
+	
 	public Client() {
 		super();
 	}

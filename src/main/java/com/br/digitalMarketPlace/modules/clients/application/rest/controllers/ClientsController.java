@@ -19,7 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.br.digitalMarketPlace.modules.clients.domain.dtos.IClientDTO;
 import com.br.digitalMarketPlace.modules.clients.domain.entities.Client;
-import com.br.digitalMarketPlace.modules.clients.domain.services.IClientsService;
+import com.br.digitalMarketPlace.modules.clients.domain.services.CrudService;
 import com.br.digitalMarketPlace.shared.exceptions.AppError;
 
 @RestController
@@ -27,9 +27,9 @@ import com.br.digitalMarketPlace.shared.exceptions.AppError;
 @Validated
 public class ClientsController {
 
-	private final IClientsService clientsService;
+	private final CrudService clientsService;
 
-	public ClientsController(IClientsService clientsService) {
+	public ClientsController(CrudService clientsService) {
 		this.clientsService = clientsService;
 	}
 

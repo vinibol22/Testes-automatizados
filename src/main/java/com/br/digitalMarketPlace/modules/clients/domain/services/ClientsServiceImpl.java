@@ -3,12 +3,14 @@ package com.br.digitalMarketPlace.modules.clients.domain.services;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.br.digitalMarketPlace.modules.clients.domain.dtos.IClientDTO;
 import com.br.digitalMarketPlace.modules.clients.domain.entities.Client;
 import com.br.digitalMarketPlace.modules.clients.domain.repositories.IClientsRepository;
 import com.br.digitalMarketPlace.shared.exceptions.AppError;
-
-public class ClientsServiceImpl implements IClientsService {
+@Service
+public class ClientsServiceImpl implements CrudService {
   private final IClientsRepository clientsRepository;
 
   public ClientsServiceImpl(IClientsRepository clientsRepository) {
@@ -26,7 +28,7 @@ public class ClientsServiceImpl implements IClientsService {
     client.setEmail(clientDTO.getEmail());
     client.setDateOfBirth(clientDTO.getDateOfBirth());
     client.setCpf(clientDTO.getCpf());
-
+    client.setProduct(clientDTO.getProduct());
     clientsRepository.save(client);
     return client.getId();
   }

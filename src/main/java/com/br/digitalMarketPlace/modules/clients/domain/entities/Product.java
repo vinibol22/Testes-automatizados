@@ -22,10 +22,9 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String name;
-	private int qtd;
 	private double price;
 	@ManyToOne
-	@JoinColumn(name = "clients_id")
+	@JoinColumn(name = "clients_id",nullable = true )
 	private Client clients;
 
 	public Product() {
@@ -33,12 +32,9 @@ public class Product implements Serializable {
 
 	}
 
-	public Product(String id, String name, int qtd, Client clients, double price) {
+	public Product(String name, double price) {
 		super();
-		this.id = id;
 		this.name = name;
-		this.qtd = qtd;
-		this.clients = clients;
 		this.price = price;
 	}
 
@@ -58,14 +54,6 @@ public class Product implements Serializable {
 		this.name = name;
 	}
 
-	public int getQtd() {
-		return qtd;
-	}
-
-	public void setQtd(int qtd) {
-		this.qtd = qtd;
-	}
-
 	public double getPrice() {
 		return price;
 	}
@@ -74,11 +62,8 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public Client getClients() {
-		return clients;
-	}
-
-	public void setClients(Client clients) {
+	public Product(Client clients) {
+		super();
 		this.clients = clients;
 	}
 
@@ -88,7 +73,7 @@ public class Product implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(clients, id, name, price, qtd);
+		return Objects.hash(id, clients, name, price);
 	}
 
 	@Override
@@ -100,9 +85,9 @@ public class Product implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		return Objects.equals(clients, other.clients) && Objects.equals(id, other.id)
+		return Objects.equals(id, other.id) && Objects.equals(clients, other.clients)
 				&& Objects.equals(name, other.name)
-				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price) && qtd == other.qtd;
+				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
 	}
 
 }

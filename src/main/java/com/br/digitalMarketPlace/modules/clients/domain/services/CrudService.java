@@ -5,7 +5,7 @@ import java.util.List;
 import com.br.digitalMarketPlace.modules.clients.domain.dtos.IClientDTO;
 import com.br.digitalMarketPlace.modules.clients.domain.entities.Client;
 
-public interface IClientsService {
+public interface CrudService {
 	String createClient(IClientDTO client);
 	List<Client> listClients();
 	Client showClient(String id);
